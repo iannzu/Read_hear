@@ -4,6 +4,7 @@ import 'package:read_hear/constants/colors.dart';
 import 'package:read_hear/constants/image_strings.dart';
 import 'package:read_hear/constants/sizes.dart';
 import 'package:read_hear/constants/text_strings.dart';
+import 'package:read_hear/views/screens/home_screen.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -19,7 +20,13 @@ class _HomepageState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+              // Navigate to Profile screen when tapped
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+            },
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: Text(tProfile, style: Theme.of(context).textTheme.headlineSmall),
@@ -76,6 +83,16 @@ class _HomepageState extends State<Profile> {
               ProfileWidget(
                 title: "Settings",
                 icon: LineAwesomeIcons.cog,
+                onPress: () {},
+              ),
+              ProfileWidget(
+                title: "Friends",
+                icon: LineAwesomeIcons.user_friends,
+                onPress: () {},
+              ),
+              ProfileWidget(
+                title: "Message",
+                icon: LineAwesomeIcons.envelope,
                 onPress: () {},
               ),
               ProfileWidget(

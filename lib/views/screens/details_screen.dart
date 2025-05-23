@@ -21,7 +21,7 @@ class DetailsScreen extends StatelessWidget {
                   height: size.height * .48,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/bg.png"),
+                      image: AssetImage("assets/images/back.png"),
                       fit: BoxFit.fitWidth,
                     ),
                     borderRadius: BorderRadius.only(
@@ -139,6 +139,11 @@ class DetailsScreen extends StatelessWidget {
                                       press: () {},
                                     ),
                                   ),
+                                  SizedBox(width: 10,),
+                                  IconButton(
+                                    icon: Icon(Icons.mic, color: Colors.black,),
+                                    onPressed: (){}
+                                    ),
                                 ],
                               )
                             ],
@@ -286,7 +291,7 @@ class BookInfo extends StatelessWidget {
                             maxLines: 5,
                             style: TextStyle(
                               fontSize: 10,
-                              color: kLightBlackColor,
+                              color: const Color.fromARGB(255, 0, 0, 0),
                             ),
                           ),
                         ),

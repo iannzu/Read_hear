@@ -1,9 +1,8 @@
 import 'package:read_hear/views/screens/details_screen.dart';
 import 'package:read_hear/views/widgets/book_rating.dart';
-import 'package:read_hear/views/widgets/reading_card_list.dart';
+import 'package:read_hear/views/Profile.dart';
 import 'package:read_hear/views/widgets/two_side_rounded_button.dart';
 import 'package:read_hear/constants/colors.dart';
-
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,7 +10,22 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
+      appBar: AppBar(
+        title: Text('Read Hear'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              // Navigate to Profile screen when tapped
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile()),
+              );
+            },
+          ),
+        ],
+      ),
+              body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -19,7 +33,7 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/main_page_bg.png"),
+                  image: AssetImage("assets/images/back.png"),
                   alignment: Alignment.topCenter,
                   fit: BoxFit.fitWidth,
                 ),
