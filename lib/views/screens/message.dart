@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 class Message extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
+
 }
 
 class _HomePageState extends State<Message> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 35, 44, 96),
+  
+      backgroundColor: Color(0xFF1C1C2E),
       body: SafeArea(
         child: Column(
           children: [
@@ -38,7 +40,7 @@ class _HomePageState extends State<Message> {
                 padding: EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
-                  color: Colors.black12,
+                  color: Colors.grey[800],
                 ),
                 child: Icon(
                   Icons.search,
@@ -78,7 +80,7 @@ class _HomePageState extends State<Message> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(45), topRight: Radius.circular(45)),
-          color: Colors.white,
+          color: Color(0xFF2C2C3E),
         ),
         child: ListView(
           padding: EdgeInsets.only(top: 35),
@@ -107,6 +109,7 @@ class _HomePageState extends State<Message> {
         ));
       },
       child: Card(
+        color: Color(0xFF3A3A4D),
         margin: EdgeInsets.symmetric(vertical: 20),
         elevation: 0,
         child: Row(
@@ -121,10 +124,10 @@ class _HomePageState extends State<Message> {
                     children: [
                       Text(name,
                           style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold)),
+                              fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white)),
                       Text(time,
                           style: TextStyle(
-                              color: Colors.grey,
+                              color: Colors.grey.shade400,
                               fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -133,7 +136,7 @@ class _HomePageState extends State<Message> {
                     chat,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        color: Colors.black54, fontWeight: FontWeight.bold),
+                        color: Colors.grey.shade300, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -141,190 +144,6 @@ class _HomePageState extends State<Message> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ChatPage extends StatefulWidget {
-  final String name;
-  final String avatar;
-
-  const ChatPage({required this.name, required this.avatar});
-
-  @override
-  _ChatPageState createState() => _ChatPageState();
-}
-
-class _ChatPageState extends State<ChatPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.indigo,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                _topChat(),
-                _bodyChat(),
-                SizedBox(height: 120),
-              ],
-            ),
-            _formChat(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _topChat() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () => Navigator.of(context).pop(),
-                child: Icon(Icons.arrow_back_ios, size: 25, color: Colors.white),
-              ),
-              SizedBox(width: 10),
-              Avatar(image: widget.avatar, size: 40),
-              SizedBox(width: 10),
-              Text(widget.name,
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white)),
-            ],
-          ),
-          Row(
-            children: [
-              _circleButton(Icons.call),
-              SizedBox(width: 10),
-              _circleButton(Icons.videocam),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _circleButton(IconData icon) {
-    return Container(
-      padding: EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
-        color: Colors.black12,
-      ),
-      child: Icon(icon, size: 25, color: Colors.white),
-    );
-  }
-
-  Widget _bodyChat() {
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(25),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(45), topRight: Radius.circular(45)),
-          color: Colors.white,
-        ),
-        child: ListView(
-          physics: BouncingScrollPhysics(),
-          children: [
-            _itemChat(1, widget.avatar,
-                'Hello! How are you?', '18.00'),
-            _itemChat(0, null, 'I\'m fine, thanks!', '18.01'),
-            _itemChat(1, widget.avatar,
-                'Let’s meet tomorrow.', '18.02'),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _itemChat(int chat, String? avatar, String message, String time) {
-    return Row(
-      mainAxisAlignment:
-          chat == 0 ? MainAxisAlignment.end : MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        avatar != null
-            ? Avatar(image: avatar, size: 50)
-            : Text(time, style: TextStyle(color: Colors.grey.shade400)),
-        Flexible(
-          child: Container(
-            margin: EdgeInsets.only(left: 10, right: 10, top: 20),
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: chat == 0
-                  ? Colors.indigo.shade100
-                  : Colors.indigo.shade50,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-                bottomLeft:
-                    chat == 0 ? Radius.circular(30) : Radius.circular(0),
-                bottomRight:
-                    chat == 1 ? Radius.circular(30) : Radius.circular(0),
-              ),
-            ),
-            child: Text(message),
-          ),
-        ),
-        chat == 1
-            ? Text(time, style: TextStyle(color: Colors.grey.shade400))
-            : SizedBox(),
-      ],
-    );
-  }
-
-  Widget _formChat() {
-    return Positioned(
-      bottom: 0,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 120,
-        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-        color: Colors.white,
-        child: TextField(
-          decoration: InputDecoration(
-            hintText: 'Type your message...',
-            suffixIcon: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _suffixIcon(Icons.mic, Colors.grey.shade300, Colors.indigo),
-                SizedBox(width: 10),
-                _suffixIcon(Icons.send_rounded, Colors.indigo, Colors.white),
-              ],
-            ),
-            filled: true,
-            fillColor: Colors.blueGrey[50],
-            contentPadding: const EdgeInsets.all(20),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50]!),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueGrey[50]!),
-              borderRadius: BorderRadius.circular(25),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _suffixIcon(IconData icon, Color bgColor, Color iconColor) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: Icon(icon, color: iconColor),
     );
   }
 }
@@ -354,6 +173,37 @@ class Avatar extends StatelessWidget {
             image: AssetImage(image),
             fit: BoxFit.cover,
           ),
+        ),
+      ),
+    );
+  }
+} 
+class ChatPage extends StatelessWidget {
+  final String name;
+  final String avatar;
+
+  const ChatPage({required this.name, required this.avatar, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFF1C1C2E),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF2C2C3E),
+        title: Row(
+          children: [
+            CircleAvatar(
+              backgroundImage: AssetImage(avatar),
+            ),
+            SizedBox(width: 10),
+            Text(name),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Text(
+          'Chat with $name',
+          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
     );

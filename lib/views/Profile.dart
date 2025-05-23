@@ -108,6 +108,16 @@ class _HomepageState extends State<Profile> {
                 onPress: () {},
               ),
               ProfileWidget(
+                title: "Savelist",
+                icon: LineAwesomeIcons.book_open,
+                onPress: () {
+                  Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+                },
+              ),
+              ProfileWidget(
                 title: "User Management",
                 icon: LineAwesomeIcons.user_check,
                 onPress: () {},
