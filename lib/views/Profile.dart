@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:read_hear/constants/colors.dart';
@@ -5,6 +6,7 @@ import 'package:read_hear/constants/image_strings.dart';
 import 'package:read_hear/constants/sizes.dart';
 import 'package:read_hear/constants/text_strings.dart';
 import 'package:read_hear/views/screens/home_screen.dart';
+import 'package:read_hear/views/screens/message.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -93,7 +95,12 @@ class _HomepageState extends State<Profile> {
               ProfileWidget(
                 title: "Message",
                 icon: LineAwesomeIcons.envelope,
-                onPress: () {},
+                onPress: () {
+                  Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Message()),
+              );
+                },
               ),
               ProfileWidget(
                 title: "Billing Details",
