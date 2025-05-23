@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:animated_switch/animated_switch.dart';
 import 'package:flutter/src/material/input_decorator.dart';
+import 'package:read_hear/views/screens/homescreen1.dart';
 import 'signup.dart';
-import 'views/Profile.dart';
+
 
 
 class LoginScreen extends StatelessWidget {
@@ -116,7 +117,7 @@ class LoginScreen extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const Profile()),
+                          MaterialPageRoute(builder: (context) => BookApp()),
                         );
                       },
                       child: Container(
