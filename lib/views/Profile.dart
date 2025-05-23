@@ -73,19 +73,95 @@ class _HomepageState extends State<Profile> {
               const Divider(),
               const SizedBox(height: 10),
               //Menu
-              ListTile(
-                leading: Container(
-                  width: 30, height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: tAccentColor.withOpacity(0.1)
-                  ),
-                ),
-              )
+              ProfileWidget(
+                title: "Settings",
+                icon: LineAwesomeIcons.cog,
+                onPress: () {},
+              ),
+              ProfileWidget(
+                title: "Billing Details",
+                icon: LineAwesomeIcons.wallet,
+                onPress: () {},
+              ),
+              ProfileWidget(
+                title: "User Management",
+                icon: LineAwesomeIcons.user_check,
+                onPress: () {},
+              ),
+              const Divider(color: Colors.grey),
+              const SizedBox(height: 10),
+              ProfileWidget(
+                title: "Information",
+                icon: LineAwesomeIcons.info,
+                onPress: () {},
+              ),
+              ProfileWidget(
+                title: "Logout",
+                icon: LineAwesomeIcons.alternate_sign_out,
+                textColor: Colors.red,
+                endIcon: false,
+                onPress: () {},
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class ProfileWidget extends StatelessWidget {
+  const ProfileWidget({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.onPress,
+    this.endIcon = true,
+    this.textColor,
+  }) : super(key: key);
+
+  final String title;
+  final IconData icon;
+  final VoidCallback onPress;
+  final bool endIcon;
+  final Color? textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    var iconColor = isDark ? tPrimaryColor : tAccentColor;
+
+    return ListTile(
+      onTap: onPress,
+      leading: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: Color.fromRGBO(33, 150, 243, 0.1),
+        ),
+        child: Icon(icon, color: iconColor),
+      ),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.bodyLarge?.apply(color: textColor),
+      ),
+      trailing:
+          endIcon
+              ? Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Color.fromRGBO(70, 70, 70, 0.098),
+                ),
+                child: Icon(
+                  LineAwesomeIcons.angle_right,
+                  size: 18.0,
+                  color: Colors.grey,
+                ),
+              )
+              : null,
     );
   }
 }
