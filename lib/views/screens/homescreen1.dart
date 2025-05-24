@@ -3,8 +3,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:read_hear/views/screens/message.dart';
 import 'package:read_hear/views/screens/idk.dart';
 import 'package:read_hear/views/Profile.dart';
-
-
+import 'package:read_hear/views/screens/create_screen.dart';
 
 class BookApp extends StatelessWidget {
   @override
@@ -26,12 +25,14 @@ class BookshelfScreen extends StatelessWidget {
     {
       'title': 'How Doctors Think',
       'author': 'Jerome Groopman',
-      'details': 'ASIN: B0038B7R74\nPublished: Nov 26, 2019\nLanguage: English\n...'
+      'details':
+          'ASIN: B0038B7R74\nPublished: Nov 26, 2019\nLanguage: English\n...',
     },
     {
       'title': 'Harry Potter',
       'author': 'J.K. Rowling',
-      'details': 'Originally published: June 26, 1997\nGenre: Fantasy Fiction\n...'
+      'details':
+          'Originally published: June 26, 1997\nGenre: Fantasy Fiction\n...',
     },
   ];
 
@@ -48,38 +49,89 @@ class BookshelfScreen extends StatelessWidget {
             ),
             ListTile(
               title: Text('Profile'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Profile())),
+              onTap:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Profile()),
+                  ),
+            ),
+            ListTile(
+              title: Text('Create'),
+              onTap:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CreationsScreen()),
+                  ),
             ),
             ListTile(
               title: Text('Messages'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Message())),
+              onTap:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Message()),
+                  ),
             ),
             ListTile(
               title: Text('Savelist'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceholderScreen(title: 'Savelist'))),
+              onTap:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => PlaceholderScreen(title: 'Savelist'),
+                    ),
+                  ),
             ),
             ListTile(
               title: Text('Settings'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceholderScreen(title: 'Settings'))),
+              onTap:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => PlaceholderScreen(title: 'Settings'),
+                    ),
+                  ),
             ),
             ListTile(
               title: Text('Assistance'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceholderScreen(title: 'Assistance'))),
+              onTap:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => PlaceholderScreen(title: 'Assistance'),
+                    ),
+                  ),
             ),
             ListTile(
               title: Text('Help'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceholderScreen(title: 'Help'))),
+              onTap:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PlaceholderScreen(title: 'Help'),
+                    ),
+                  ),
             ),
             ListTile(
               title: Text('Log out'),
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PlaceholderScreen(title: 'Log out'))),
+              onTap:
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PlaceholderScreen(title: 'Log out'),
+                    ),
+                  ),
             ),
           ],
         ),
       ),
       appBar: AppBar(
         title: Text('Bookshelf'),
-        actions: [IconButton(icon: Icon(LineAwesomeIcons.book), onPressed: () {})],
+        actions: [
+          IconButton(icon: Icon(LineAwesomeIcons.book), onPressed: () {}),
+        ],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(50),
           child: Padding(
@@ -113,11 +165,12 @@ class BookshelfScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ReaderScreen(
-                      bookTitle: book['title']!,
-                      author: book['author']!,
-                      bookDescription: book['details']!,
-                    ),
+                    builder:
+                        (context) => ReaderScreen(
+                          bookTitle: book['title']!,
+                          author: book['author']!,
+                          bookDescription: book['details']!,
+                        ),
                   ),
                 );
               },
@@ -152,9 +205,7 @@ class ReaderScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(bookTitle),
-        actions: [
-          IconButton(icon: Icon(Icons.favorite), onPressed: () {}),
-        ],
+        actions: [IconButton(icon: Icon(Icons.favorite), onPressed: () {})],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -170,7 +221,10 @@ class ReaderScreen extends StatelessWidget {
                     height: 180,
                   ),
                   SizedBox(height: 8),
-                  Text("Author: $author", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(
+                    "Author: $author",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
@@ -186,10 +240,20 @@ class ReaderScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Divider(),
-            Text("Comments", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            Text(
+              "Comments",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
             SizedBox(height: 10),
-            CommentWidget(username: "GoatMeh", comment: "This got me wanna be a doctor. FREE GOAT MILK FOR EVERYONE!!"),
-            CommentWidget(username: "BusinessMeow", comment: "The book is great. All change BusMeow to DocMeow now."),
+            CommentWidget(
+              username: "GoatMeh",
+              comment:
+                  "This got me wanna be a doctor. FREE GOAT MILK FOR EVERYONE!!",
+            ),
+            CommentWidget(
+              username: "BusinessMeow",
+              comment: "The book is great. All change BusMeow to DocMeow now.",
+            ),
             SizedBox(height: 10),
             TextField(
               decoration: InputDecoration(

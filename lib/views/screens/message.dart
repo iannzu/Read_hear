@@ -1,20 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:read_hear/views/screens/homescreen1.dart'; // Replace with actual import path for BookApp
 
 class Message extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
-
 }
 
 class _HomePageState extends State<Message> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  
       backgroundColor: Color(0xFF1C1C2E),
       body: SafeArea(
         child: Column(
           children: [
+            // Back button at top-left
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  icon: Icon(Icons.arrow_back, color: Colors.white),
+                  label: Text(
+                    'Back',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => BookApp()),
+                    );
+                  },
+                ),
+              ),
+            ),
+
             _top(),
             _body(),
           ],
@@ -177,7 +203,8 @@ class Avatar extends StatelessWidget {
       ),
     );
   }
-} 
+}
+
 class ChatPage extends StatelessWidget {
   final String name;
   final String avatar;
